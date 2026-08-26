@@ -1,15 +1,20 @@
 @echo off
 cd /d C:\Users\amits\python-fundamentals
 
-git add .
+echo.
+echo Checking for changes...
+echo.
+
+git add python-fundamentals.ipynb
 
 git diff --cached --quiet
 if %errorlevel%==0 (
-    echo No changes to upload.
+    echo No new changes found.
+    pause
     exit /b
 )
 
-git commit -m "Auto update notebook"
+git commit -m "Update Python fundamentals notebook"
 
 git pull --rebase origin main
 
@@ -17,4 +22,6 @@ git push origin main
 
 echo.
 echo GitHub updated successfully.
+echo.
+
 pause
